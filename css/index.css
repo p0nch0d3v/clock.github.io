@@ -1,0 +1,92 @@
+@font-face {
+    font-family: digital-7;
+    src: url(digital-7.ttf);
+}
+
+:root {
+    --default--color: #00FF00;
+    --one-hundred-color: #00FFFF;
+    --seventy-five-color:#FFFF00;
+    --fifty-color:#FFA500;
+    --twenty-five-color:#FF0000;
+}
+body {
+    background-color: white;
+    color: black;
+}
+.main-wrapper {
+    display: none;
+}
+body::after {
+    content: "Aspect Ratio Unsupported";
+}
+@media (min-aspect-ratio: 4/3) {
+    body {
+        background-color:#000;
+        font-family: 'digital-7';
+        margin: 0;
+        padding: 0;
+    }
+    body::before{
+        content: unset;
+    }
+    .main-wrapper {
+        display: flex;
+        flex-direction: row;
+    }
+    .clock-wrapper {
+        height: 100vh;
+        width: 100vw;
+        align-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .clock {
+        color: var(--default--color);
+        font-weight: bold;
+        display: flex;
+    }
+    .digit {
+        width: 22vw;
+        text-align: right;
+        font-size: 80vh;
+        border: 1px solid transparent;
+        display: inline-block;
+        height: 65vh;
+        transform: scale(1, 1.25);
+    }
+
+    .clock > .pulse {
+        font-size: 80vh;
+        display: inline-block;
+        height: 65vh;
+        transform: scale(1, 1.25);
+        border: 1px solid transparent;
+    }
+    .clock > .pulse.black {
+        color: black !important;
+    }
+
+    .clock-wrapper > .clock.exact-100 {
+        color: var(--one-hundred-color);
+    }
+
+    .clock-wrapper > .clock.more-than-75 {
+        color: var(--default--color);
+    }
+    .clock-wrapper > .clock.between-75-50 {
+        color:var(--seventy-five-color);
+    }
+    .clock-wrapper > .clock.between-50-75 {
+        color: var(--fifty-color);
+    }
+    .clock-wrapper > .clock.less-than-25 {
+        color: var(--twenty-five-color);
+    }
+
+    .clock-wrapper > .clock.charging > .pulse {
+        color: var(--one-hundred-color);
+    }
+}
